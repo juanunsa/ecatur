@@ -38,7 +38,13 @@ class SplashScreenState extends State<MyHomePage> {
   @override  
   Widget build(BuildContext context) {  
     return  Container(
-         
+          width: 400,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/saludo.jpeg'),
+              fit: BoxFit.fill,
+            ),
+          ),
           );
           }  
 } 
