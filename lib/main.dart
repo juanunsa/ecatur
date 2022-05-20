@@ -1,18 +1,28 @@
 import 'dart:async';
 //import 'dart:html';
 //import 'dart:html';  
+import 'package:ecatur/pages/contactos.dart';
 import 'package:ecatur/pages/tablita.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';  
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+//import 'package:flutter_wordpress/flutter_wordpress.dart' as wp;
 
   
 void main() { runApp(MyApp());}  
   
+
+
 class MyApp extends StatelessWidget {  
   @override  
   Widget build(BuildContext context) {  
-    return MaterialApp(  
+    return MaterialApp( 
+      routes: <String, WidgetBuilder>{
+        '/contactos': (BuildContext context) =>  Contacto(),
+      }, 
       home: MyHomePage(),  
       debugShowCheckedModeBanner: false,  
     );  
@@ -147,7 +157,11 @@ class MenuLateral extends StatelessWidget{
            ListTile(
              leading: const Icon(Icons.contact_page),
             title: const Text("Contacto",style:TextStyle(color:Colors.white)),
-            onTap: (){},
+            onTap: ()=>Navigator.pushReplacement(context,  
+            MaterialPageRoute(builder:  
+                (context) => Contacto()  
+            )  
+         )  ,    
             hoverColor: Colors.indigo,
           )
                  ],
@@ -160,14 +174,28 @@ class MenuLateral extends StatelessWidget{
 class Mapas extends StatefulWidget {
   const Mapas({Key? key}) : super(key: key);
   
+  
 
   @override
   _MyAppState createState() => _MyAppState();
 }
 
+
+
+
+
 class _MyAppState extends State<Mapas> {
   late GoogleMapController mapController;
- 
+   Future obtenerLugares() async {
+    Uri uri = Uri.parse("https://cafayate.herokuapp.com/lugares.php");
+    final response = await http.get(uri);
+   // final List lista=json.decode(response.body);
+   }
+   
+   // Map<MarkerId, Marker> markers1 = <MarkerId, Marker>{};
+  
+    
+   
   final LatLng _center = const LatLng(-26.07, -65.98);
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{
     MarkerId('Tres Cruces'): Marker(
@@ -218,6 +246,7 @@ class _MyAppState extends State<Mapas> {
         print('Drag Ended');
       },
     )
+    
   };
   void _onMapCreated(GoogleMapController controller) {
     mapController = controller;
@@ -252,3 +281,5 @@ class _MyAppState extends State<Mapas> {
     );
   }
 }
+
+
