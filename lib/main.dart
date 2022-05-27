@@ -7,7 +7,7 @@ import 'package:ecatur/pages/tablita.dart';
 import 'package:flutter/material.dart';  
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'dart:convert';
-
+import 'package:ecatur/pantallas/investigacion.dart';
 import 'package:http/http.dart' as http;
 //import 'package:flutter_wordpress/flutter_wordpress.dart' as wp;
 
@@ -20,8 +20,11 @@ class MyApp extends StatelessWidget {
   @override  
   Widget build(BuildContext context) {  
     return MaterialApp( 
+      theme:ThemeData(),
+      darkTheme: ThemeData.dark(),
       routes: <String, WidgetBuilder>{
         '/contactos': (BuildContext context) =>  Contacto(),
+        '/pantallas/investigacion':(BuildContext context)=>Investigacion()
       }, 
       home: MyHomePage(),  
       debugShowCheckedModeBanner: false,  
@@ -37,7 +40,7 @@ class SplashScreenState extends State<MyHomePage> {
   @override  
   void initState() {  
     super.initState();  
-    Timer(Duration(seconds: 3),  
+    Timer(const Duration(seconds: 2),  
             ()=>Navigator.pushReplacement(context,  
             MaterialPageRoute(builder:  
                 (context) => Mapas()  
@@ -49,7 +52,7 @@ class SplashScreenState extends State<MyHomePage> {
   Widget build(BuildContext context) {  
     return  Container(
           width: 400,
-          decoration: BoxDecoration(
+          decoration:const  BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/saludo.jpeg'),
               fit: BoxFit.fill,
@@ -64,8 +67,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {  
     return Scaffold(  
       appBar: AppBar(
-        title:Text("Inicio"),
-        backgroundColor:Color.fromARGB(255,147,26,43),
+        title:const Text("Inicio"),
+        backgroundColor:const Color.fromARGB(255,147,26,43),
        
         
     ),
@@ -89,8 +92,8 @@ class MenuLateral extends StatelessWidget{
     return  Drawer(
       backgroundColor:const Color.fromARGB(255,147,26,43),
       child: ListView(
-        padding: const EdgeInsets.all(9.0),
-       
+        padding: const EdgeInsets.all(9.0),     
+        
         children: <Widget>[
           const UserAccountsDrawerHeader(
               accountName: null,
@@ -115,25 +118,30 @@ class MenuLateral extends StatelessWidget{
             ),
           ),
            const Padding(padding: EdgeInsets.only(bottom: 2.0)),
-
            ListTile( 
-            leading: const Icon(Icons.tour),        
-            title: const Text("¿Dónde visitar?",style:TextStyle(color:Colors.white)),
-            onTap:()=>Navigator.pushReplacement(context,  
-            MaterialPageRoute(builder:  
-                (context) => Tabla()  
-            )  
-         )  ,            
-            selectedColor: Colors.indigo,
-          ),
-                        const Padding(padding: EdgeInsets.only(bottom: 2.0)),
+              leading: const Icon(Icons.tour),        
+              title: const Text("¿Dónde visitar?",style:TextStyle(color:Colors.white)),
+              onTap:()=>Navigator.pushReplacement(context,  
+              MaterialPageRoute(builder:  
+                  (context) => Tabla()  
+              )  
+                    )  ,            
+              hoverColor: Colors.indigo,
+                     ),
+          
+                        const Padding(padding: EdgeInsets.only(bottom: 2.0),),
+                       
 
          ListTile(            
            leading: const Icon(Icons.science),
            
             title: const Text("Investigación",style:TextStyle(color:Colors.white)),
-            onTap: (){},            
-            selectedColor: Colors.indigo,
+            onTap:()=> Navigator.pushReplacement(context,  
+            MaterialPageRoute(builder:  
+                (context) => Investigacion()  
+            )  
+         )  ,              
+            hoverColor: Colors.indigo,
           ),
           
           ListTile(
@@ -165,6 +173,7 @@ class MenuLateral extends StatelessWidget{
             hoverColor: Colors.indigo,
           )
                  ],
+                
       ) ,
     );
   }
@@ -188,7 +197,7 @@ class _MyAppState extends State<Mapas> {
   late GoogleMapController mapController;
    Future obtenerLugares() async {
     Uri uri = Uri.parse("https://cafayate.herokuapp.com/lugares.php");
-    final response = await http.get(uri);
+    final  response = await http.get(uri);
    // final List lista=json.decode(response.body);
    }
    
@@ -199,9 +208,9 @@ class _MyAppState extends State<Mapas> {
   final LatLng _center = const LatLng(-26.07, -65.98);
   Map<MarkerId, Marker> markers = <MarkerId, Marker>{
     MarkerId('Tres Cruces'): Marker(
-      markerId: MarkerId('Tres Cruces'),
-      position: LatLng(-25.89120471950373, -65.71128107607366),
-      infoWindow: InfoWindow(title: 'Tres Cruces', snippet: '*'),
+      markerId:const  MarkerId('Tres Cruces'),
+      position: const LatLng(-25.89120471950373, -65.71128107607366),
+      infoWindow:const  InfoWindow(title: 'Tres Cruces', snippet: '*'),
       onTap: () {
         //_onMarkerTapped(markerId);
         print('Marker Tapped');
@@ -211,9 +220,9 @@ class _MyAppState extends State<Mapas> {
       },
     ),
     MarkerId('Sinclinal de las Ranas'): Marker(
-      markerId: MarkerId('Sinclinal de las Ranas'),
-      position: LatLng(-25.71714332068316, -65.70262022316456),
-      infoWindow: InfoWindow(title: 'Sinclinal de las Ranas', snippet: '*'),
+      markerId: const MarkerId('Sinclinal de las Ranas'),
+      position: const LatLng(-25.71714332068316, -65.70262022316456),
+      infoWindow:const InfoWindow(title: 'Sinclinal de las Ranas', snippet: '*'),
       onTap: () {
         //_onMarkerTapped(markerId);
         print('Marker Tapped');
@@ -258,8 +267,8 @@ class _MyAppState extends State<Mapas> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title:Text("Inicio"),
-           backgroundColor:Color.fromARGB(255,147,26,43),
+          title:const Text("Inicio"),
+           backgroundColor:const Color.fromARGB(255,147,26,43),
         ),
         
          drawer: MenuLateral(),

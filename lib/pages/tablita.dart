@@ -47,7 +47,7 @@ class _ListaLugaresState extends State<ListaLugares> {
       
       appBar: AppBar(        
         backgroundColor: Color.fromARGB(255,147,26,43),
-        title: const Text("LISTA DE Lugares"),
+        title: const Text("Lista de Lugares"),
         leading: IconButton(
             onPressed:  ()=>Navigator.pushReplacement(context,  
               MaterialPageRoute(builder:  
@@ -66,7 +66,7 @@ class _ListaLugaresState extends State<ListaLugares> {
               image: AssetImage('assets/logo1.jpeg'),
               fit : BoxFit.fill,
            ),
-           opacity: 0.4),
+           opacity: 0.1),
           ), 
            // other children widgets of Stack
           FutureBuilder<List>(         
@@ -118,15 +118,16 @@ class ElementoLista extends StatelessWidget {
               ));
             },
             child: Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                 elevation: 30,
                 color:const  Color.fromARGB(255,147,26,43),
                 child: Container(
 
-                        padding: const EdgeInsets.only(left:5.0,bottom: 5.0,top: 5.0),
+                        padding: const EdgeInsets.only(left:2.0,bottom: 10.0,top: 10.0),
                         child: Row(
                               children: <Widget>[
                                  Container(
+                                   
                                    child: Icon(Icons.travel_explore),                      
                                    ),
                                   Container(
@@ -134,9 +135,9 @@ class ElementoLista extends StatelessWidget {
                                     lista[posicion]['nombre'],
                                      style:const TextStyle(
                                      fontWeight: FontWeight.bold, 
-                                     color:Color.fromARGB(255, 19, 18, 18),
+                                     color:Color.fromARGB(255, 255, 255, 255),
                                     fontSize: 20.0,
-                                     fontFamily: 'Arial',
+                                     fontFamily: 'Verdana',
                                       ),
                                     ),
                                    ), 

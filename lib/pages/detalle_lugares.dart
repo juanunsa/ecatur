@@ -70,24 +70,24 @@ class _DetallesUsuarioState extends State<DetallesUsuario> {
       initialPage: 0,
       enableInfiniteScroll: true,
       
-      reverse: false,
-      autoPlay: false,
+      reverse: true,
+      autoPlay: true,
       autoPlayInterval: Duration(seconds: 4),
       autoPlayAnimationDuration: Duration(milliseconds: 1500),
       autoPlayCurve: Curves.fastOutSlowIn,
       enlargeCenterPage: true,
       scrollDirection: Axis.horizontal),
-  items: [1,2,3,4,5].map((i) {
+  items: [3,21,31,43,51].map((i) {
     return Builder(
       builder: (BuildContext context) {
         return Container(
-          width: MediaQuery.of(context).size.shortestSide,
-          
-          margin: EdgeInsets.symmetric(horizontal: 5.0,vertical: 30.0),
+          width: MediaQuery.of(context).size.shortestSide,          
+          margin: EdgeInsets.symmetric(horizontal: 5.0,vertical: 20.0),
           decoration: BoxDecoration(
-            color: Colors.amber
+                        
+            image: DecorationImage(image: AssetImage('assets/files/$i.jpg'),),
           ),
-          child: Text('text $i', style: TextStyle(fontSize: 16.0),)
+          
         );
       },
     );
