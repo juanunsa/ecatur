@@ -20,6 +20,7 @@ class MyWebView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+         backgroundColor:Color.fromARGB(255,147,26,43),
       ),
       body: WebView(
         initialUrl: selectedUrl,

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {  
     return MaterialApp( 
       theme:ThemeData(),
-      darkTheme: ThemeData.dark(),
+      //darkTheme: ThemeData.fallback(),
       routes: <String, WidgetBuilder>{
         '/contactos': (BuildContext context) =>  Contacto(),
         '/pantallas/investigacion':(BuildContext context)=>Investigacion()
