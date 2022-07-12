@@ -12,7 +12,9 @@ class _ContactoState extends State<Contacto> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(title: Text('Contacto'),),
+      appBar: AppBar(title: Text('Contacto'),         
+                     backgroundColor: const Color.fromARGB(255, 147, 26, 43),
+),
       
       
     );

@@ -41,6 +41,7 @@ dependencies:
   flutter_swiper: ^1.0.0
   wordpress_api: ^1.2.0
   webview_flutter: ^3.0.4
+  flutter_rating_bar: ^4.0.1
   
   
 
