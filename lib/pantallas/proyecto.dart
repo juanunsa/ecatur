@@ -66,7 +66,7 @@ class _ProyectoState extends State<Proyecto> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                    "../../assets/inicio/equipo$i.png"),
+                                    "assets/inicio/equipo$i.png"),
                               ),
                             ),
                           );

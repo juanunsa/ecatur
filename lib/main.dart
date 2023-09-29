@@ -5,7 +5,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:ecatur/pages/contactos.dart';
 import 'package:ecatur/pages/artesanias.dart';
 import 'package:ecatur/pages/geologia.dart';
-
 import 'package:ecatur/pages/tablita.dart';
 import 'package:ecatur/pantallas/proyecto.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +12,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:ecatur/pages/puntosInteres.dart';
 
 //import 'package:http/http.dart' as http;
-
-
-
 
 /// Determine the current position of the device.
 ///

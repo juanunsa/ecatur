@@ -66,7 +66,7 @@ class _GeologiaState extends State<Geologia> {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 image: AssetImage(
-                                    "../../assets/carrusel/$i.png"),
+                                    "assets/carrusel/$i.png"),
                               ),
                             ),
                           );

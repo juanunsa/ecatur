@@ -71,6 +71,8 @@ flutter:
   assets:
     - assets/
     - assets/files/
+    - assets/carrusel/
+    - assets/inicio/
     - assets/html/
   # To add assets to your application, add an assets section, like this:
   # assets:
