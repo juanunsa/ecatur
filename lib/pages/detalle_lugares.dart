@@ -29,41 +29,17 @@ class _DetallesUsuarioState extends State<DetallesUsuario> {
           title: Text("" + palabra),
         ),
         body: Stack(
+          
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Center(
-                  child: Column(
-                children: <Widget>[
-                  Text(
-                    "Latitud: " + widget.lista[widget.index]['latitud'],
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    "longitud: " + widget.lista[widget.index]['longitud'],
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 20),
-                  ),
-                  Text(
-                    "Distancia a terminal: " +
-                        widget.lista[widget.index]['terminal'].toString() +
-                        'km',
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 25,color:Colors.blueAccent),
-                  ),
-                ],
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
               child: Container(
-                padding: const EdgeInsets.only(top: 50.0),
+                padding: const EdgeInsets.only(top: 150.0),
                 child: Center(
                     child: Column(children: <Widget>[
                   CarouselSlider(
                     options: CarouselOptions(
-                        height: 400,
+                        height: 300,
                         aspectRatio: 16 / 3,
                         viewportFraction: 0.9,
                         initialPage: 0,
@@ -106,6 +82,31 @@ class _DetallesUsuarioState extends State<DetallesUsuario> {
                 ])),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                  child: Column(
+                children: <Widget>[
+                 /* Text(
+                    "Latitud: " + widget.lista[widget.index]['latitud'],
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    "longitud: " + widget.lista[widget.index]['longitud'],
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 10),
+                  ),
+                  */Text(
+                     
+                        widget.lista[widget.index]['texto'].toString() ,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 15,color:Colors.blueAccent),
+                  )
+                ],
+              )),
+            ),
+            
           ],
         ));
   }

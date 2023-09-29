@@ -1,17 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:ecatur/pages/articulos.dart';
+import 'package:ecatur/pages/vistaWeb.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ecatur/pages/contactos.dart';
-import 'package:ecatur/pages/contenidos.dart';
-import 'package:ecatur/pages/documentacion.dart';
-import 'package:ecatur/pages/tablita.dart';
+import 'package:ecatur/pages/artesanias.dart';
+import 'package:ecatur/pages/geologia.dart';
 
+import 'package:ecatur/pages/tablita.dart';
+import 'package:ecatur/pantallas/proyecto.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:ecatur/pages/puntosInteres.dart';
 
-import 'package:ecatur/pantallas/investigacion.dart';
-import 'package:http/http.dart' as http;
+//import 'package:http/http.dart' as http;
 
 
 
@@ -88,9 +89,10 @@ class MyApp extends StatelessWidget {
       //darkTheme: ThemeData.fallback(),
       routes: <String, WidgetBuilder>{
         '/contactos': (BuildContext context) => Contacto(),
-        '/pantallas/investigacion': (BuildContext context) => Investigacion(),
-        '/pages/contenidos': (BuildContext context) => Contenidos(),
-        'pages/articulos':(BuildContext context)=>Articulos(),
+        '/pages/geologia': (BuildContext context) => Geologia(),
+        '/pages/artesanias': (BuildContext context) => Artesanias(),
+        'pages/vistaWeb':(BuildContext context)=>VistaWeb(),
+        '/pantallas/proyecto': (BuildContext context) => Proyecto(),
       },
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
@@ -186,33 +188,34 @@ class MenuLateral extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.science),
-            title: const Text("Investigación",
+            title: const Text("Artesanias",
                 style: TextStyle(color: Colors.white)),
             onTap: () => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => Investigacion())),
+                MaterialPageRoute(builder: (context) => Artesanias())),
             hoverColor: Colors.indigo,
           ),
           ListTile(
             leading: const Icon(Icons.school),
-            title: const Text("Capacitación",
+            title: const Text("Geologia",
                 style: TextStyle(color: Colors.white)),
-            onTap: () {},
+            onTap: ()  =>Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => Geologia())),
             hoverColor: Colors.indigo,
           ),
           ListTile(
             leading: const Icon(Icons.book),
-            title: const Text("Documentación y Bibliografía",
+            title: const Text("El Proyecto",
                 style: TextStyle(color: Colors.white)),
             onTap: () => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => Investigacion())),
+                MaterialPageRoute(builder: (context) => Proyecto())),
             hoverColor: Colors.indigo,
           ),
           ListTile(
             leading: const Icon(Icons.movie),
-            title: const Text("Contenidos audiovisuales",
+            title: const Text("Nuestra Web",
                 style: TextStyle(color: Colors.white)),
             onTap:() => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => Articulos())),
+                MaterialPageRoute(builder: (context) => VistaWeb())),
             hoverColor: Colors.indigo,
           ),
           ListTile(
@@ -254,9 +257,27 @@ class _Mapas extends State<Mapas> {
 
     getData();
   }
+  getData()async{
+    List results = json.decode(lista.texto.toString()); 
+     Iterable _markers = Iterable.generate(19, (index) {
+          Map result = results[index];
+           final nombre=result["nombre"];
+           final latitud = result["latitud"];
+          final longitud = result["longitud"];
+          
+          LatLng latLngMarker = LatLng(double.parse(latitud), double.parse(longitud));
 
-  getData() async {
-    Uri url=Uri.parse('https://cafayate.herokuapp.com/lugares.php');
+          return Marker(markerId: MarkerId("$nombre"),position: latLngMarker,icon:BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
+          infoWindow: (InfoWindow(title: "$nombre")));
+        });
+         setState(() {
+          markers = _markers;
+        });
+  }
+  /*getData() async {
+
+    
+    Uri url=Uri.parse('https://drive.google.com/file/d/1-t2uIAklEvmsD-5QMSMrazrPa-COQfEV');
     try {
       final response =
           await http.get(url);
@@ -288,6 +309,7 @@ class _Mapas extends State<Mapas> {
       print(e.toString());
     }
   }
+*/
 
   @override
   Widget build(BuildContext context) {

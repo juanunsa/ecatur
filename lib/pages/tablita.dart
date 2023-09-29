@@ -1,6 +1,7 @@
 import 'package:ecatur/main.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:ecatur/pages/puntosInteres.dart';
 
 import 'dart:convert';
 import 'dart:async';
@@ -32,9 +33,10 @@ class ListaLugares extends StatefulWidget {
 
 class _ListaLugaresState extends State<ListaLugares> {
   Future<List> obtenerLugares() async {
-    Uri uri = Uri.parse("https://cafayate.herokuapp.com/lugares.php");
-    final response = await http.get(uri);
-    return json.decode(response.body);
+    //Uri uri = Uri.parse("https://drive.google.com/file/d/1-t2uIAklEvmsD-5QMSMrazrPa-COQfEV");
+    //final response = await http.get(uri);
+    //return json.decode(response.body);
+    return json.decode(lista.texto.toString());
   }
 
   @override
